@@ -1,67 +1,67 @@
-# Anomaly Modern Main Menu
+# KillTrack Unique Main Menu — Terminal Zone
 
-Современное переработанное главное меню для **S.T.A.L.K.E.R. Anomaly** (xray-monolith).
+Полностью переработанное главное меню для **S.T.A.L.K.E.R. Anomaly / G.A.M.M.A.**
 
-## Концепция
+## Почему уникально
 
-Полностью новый современный стиль:
+Большинство модов (включая то, что на твоём скрине) делают одно и то же:
+- кнопки **справа**
+- маленький шрифт
+- почти чёрный фон
 
-- Тёмный кинематографичный фон с атмосферой Зоны
-- Чистый минималистичный интерфейс
-- Современные кнопки с акцентным цветом (холодный бирюзово-зелёный / radiation glow)
-- Улучшенный слайдер (шниага)
-- Новая атмосферная музыка меню
-- Полная поддержка MCM
-- Поддержка 16:9 и ультрашироких мониторов
-- Чистый код без конфликтов с большинством UI-модов
+**Мы делаем наоборот:**
 
-### Стиль
+- Кнопки **слева** (крупный `graffiti32`)
+- Полноэкранный кинематографичный фон
+- Левый тёмный градиент + тонкая акцентная линия
+- Больше воздуха между пунктами
+- Стиль "терминал в Зоне"
 
-**"Modern Zone"** — смесь современного UI и классической сталкерской атмосферы:
+## Быстрый старт
 
-- Тёмный полупрозрачный сайд-панель / блок кнопок
-- Акцентный цвет: `#2EE6A6` (radiation teal)
-- Тонкие светящиеся линии
-- Чистая типографика
-- Минимализм + атмосфера
+1. Скопируй `gamedata` в игру / MO2.
+2. Положи текстуры:
+   ```
+   textures/ui/ui_mm_terminal_bg.dds
+   textures/ui/ui_mm_terminal_gradient.dds
+   textures/ui/ui_mm_terminal_line.dds
+   textures/ui/ui_mm_terminal_logo.dds
+   textures/ui/ui_mm_terminal_slider.dds
+   ```
+3. Музыка:
+   ```
+   sounds/music/terminal_zone_theme.ogg
+   ```
+
+## Где взять готовые ассеты
+
+**Анимированные фоны (рекомендую):**
+- [Zaper Animated Main Menu 2.2](https://www.moddb.com/mods/stalker-anomaly/addons/zaper-animated-main-menu-21-for-169-2k) — лучший выбор
+- [Atmospheric Animated Background](https://www.moddb.com/addons/atmospheric-animated-background-menu)
+
+**Музыка (бесплатно):**
+- Официальный MoozE: https://soc.stalker-game.com/?page=soundtrack  
+  → `Radwind Pt.2` или `Dead Cities Pt.2` идеально подходят
+- [EYEWIDEASCA](https://www.moddb.com/mods/stalker-anomaly/addons/eyewideasca-main-menu-music)
+
+После скачивания просто переименуй файлы под наши пути.
+
+## Совместимость
+
+- MCM (кнопка есть во всех меню)
+- G.A.M.M.A. 0.9.5 / Anomaly 1.5.x
+- Last Save to Top
 
 ## Структура
 
 ```
 gamedata/
-├── configs/ui/
-│   └── ui_mm_main_16.xml          ← основной файл меню
-├── textures/ui/
-│   ├── ui_mm_modern_bg.dds        ← фон (1920×1080+)
-│   ├── ui_mm_modern_slider.dds    ← слайдер
-│   ├── ui_mm_modern_logo.dds      ← логотип
-│   └── ui_mm_modern_panel.dds     ← панель кнопок (опционально)
-└── sounds/music/
-    └── modern_menu_theme.ogg      ← новая музыка меню
+├── configs/ui/ui_mm_main_16.xml
+├── textures/ui/          ← сюда текстуры
+└── sounds/music/         ← сюда музыку
 ```
-
-## Установка
-
-1. Скопируй папку `gamedata` в корень игры / через MO2.
-2. Положи свои текстуры и музыку по путям выше.
-3. Запусти игру.
-
-## Совместимость
-
-- MCM (кнопка присутствует во всех вариантах меню)
-- Last Save to Top
-- Большинство UI-реплейсеров (при правильном приоритете)
-- Anomaly 1.5.2 / 1.5.3 + monolith builds
-
-## Что дальше
-
-- [ ] Готовые высококачественные текстуры
-- [ ] Несколько вариантов фона
-- [ ] Particle-эффекты / subtle animation
-- [ ] MCM-опции (выбор темы, музыки)
-- [ ] Патчи для других меню (load/save/options)
 
 ---
 
-**KillTrack / Modern Menu Project**  
-Предыдущая версия (Kill Confirm) сохранена в backup
+**KillTrack Project**  
+Предыдущий Kill Confirm сохранён в backup.
