@@ -1,0 +1,92 @@
+--[[
+    Kill Confirm UI
+    Bottom-center stylish text + optional secondary line
+    Simple fade + scale-like effect via color & position animation
+]]
+
+kill_confirm_ui = kill_confirm_ui or {}
+
+local ui = {
+    visible     = false,
+    start_time  = 0,
+    show_time   = 2200,
+    text        = "",
+    sub_text    = nil,
+    info        = "",
+    color       = {255, 255, 255},
+}
+
+-- Simple static positions (screen is 1024x768 base for UI)
+local POS = {
+    main_y      = 680,
+    sub_y       = 710,
+    info_y      = 735,
+}
+
+function kill_confirm_ui.show(main_text, sub_text, info_text, color, duration)
+    ui.visible    = true
+    ui.start_time = time_global()
+    ui.show_time  = duration or 2200
+    ui.text       = main_text or ""
+    ui.sub_text   = sub_text
+    ui.info       = info_text or ""
+    ui.color      = color or {255, 255, 255}
+end
+
+function kill_confirm_ui.hide()
+    ui.visible = false
+end
+
+-- Called every frame from the main script or via update
+function kill_confirm_ui.update()
+    if not ui.visible then return end
+
+    local now = time_global()
+    local elapsed = now - ui.start_time
+
+    if elapsed > ui.show_time then
+        ui.visible = false
+        return
+    end
+
+    -- simple alpha fade out in last 400ms
+    local alpha = 255
+    local fade_start = ui.show_time - 400
+    if elapsed > fade_start then
+        local t = (elapsed - fade_start) / 400
+        alpha = math.floor(255 * (1 - t))
+        if alpha < 0 then alpha = 0 end
+    end
+
+    local r, g, b = ui.color[1], ui.color[2], ui.color[3]
+
+    -- Main text
+    if ui.text and ui.text ~= "" then
+        Get_UI():AddText(ui.text, 512, POS.main_y, r, g, b, alpha, 1, 1) -- centered-ish
+    end
+
+    -- Sub text
+    if ui.sub_text and ui.sub_text ~= "" then
+        Get_UI():AddText(ui.sub_text, 512, POS.sub_y, 200, 200, 200, alpha, 0.8, 1)
+    end
+
+    -- Info (distance / streak)
+    if ui.info and ui.info ~= "" then
+        Get_UI():AddText(ui.info, 512, POS.info_y, 180, 180, 180, alpha, 0.7, 1)
+    end
+end
+
+-- Fallback if Get_UI is not available - some builds use different HUD
+local function safe_draw()
+    if kill_confirm_ui and kill_confirm_ui.update then
+        kill_confirm_ui.update()
+    end
+end
+
+-- Hook into game update if possible
+function on_game_start()
+    -- try to register update
+    if RegisterScriptCallback then
+        RegisterScriptCallback("on_update", safe_draw)
+    end
+end
