@@ -1,0 +1,8 @@
+-- Early loader to guarantee kill_confirm scripts are initialized
+-- The "!!!" prefix makes it load early among scripts
+
+function on_game_start()
+    if kill_confirm and kill_confirm.on_game_start then
+        -- already handled inside the module
+    end
+end
