@@ -1,0 +1,35 @@
+--[[
+    Kill Confirm + Killstreak
+    Pure Lua addon for S.T.A.L.K.E.R. Anomaly (xray-monolith)
+    Style inspired by Contract Wars
+]]
+
+local MOD_NAME = "kill_confirm"
+
+-- ========================
+-- CONFIG
+-- ========================
+local CFG = {
+    -- How long the killstreak lives without new kills (ms)
+    streak_timeout       = 8000,
+
+    -- Long range threshold (meters)
+    long_range_dist      = 45.0,
+
+    -- Point blank threshold (meters)
+    point_blank_dist     = 3.5,
+
+    -- UI display time (ms)
+    ui_show_time         = 2200,
+
+    -- Sound volume (0.0 - 1.0)
+    sound_volume         = 0.85,
+
+    -- Enable/disable different categories
+    enable_headshot      = true,
+    enable_knife         = true,
+    enable_grenade       = true,
+    enable_long_range    = true,
+    enable_mutant        = true,
+    enable_streak        = true,
+}
